@@ -79,4 +79,16 @@ function run_trailblaze_youtube_player() {
 	$plugin->run();
 
 }
+
+require plugin_dir_path( __FILE__ ) . 'plugin-update-checker/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+    'https://github.com/jefferykarbowski/TrailBlaze-YouTube-Player',
+    __FILE__,
+    'trailblaze-youtube-player'
+);
+
+$myUpdateChecker->setBranch('main');
+
 run_trailblaze_youtube_player();
