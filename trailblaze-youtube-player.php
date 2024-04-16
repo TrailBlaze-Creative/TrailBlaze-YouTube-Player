@@ -84,7 +84,7 @@ require plugin_dir_path( __FILE__ ) . 'plugin-update-checker/plugin-update-check
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
 $myUpdateChecker = PucFactory::buildUpdateChecker(
-    'https://github.com/jefferykarbowski/TrailBlaze-YouTube-Player',
+    'https://github.com/TrailBlaze-Creative/TrailBlaze-YouTube-Player',
     __FILE__,
     'trailblaze-youtube-player'
 );
