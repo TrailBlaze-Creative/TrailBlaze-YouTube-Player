@@ -16,7 +16,7 @@
  * Plugin Name:       TrailBlaze YouTube Player
  * Plugin URI:        https://github.com/TrailBlaze-Creative/TrailBlaze-YouTube-Player
  * Description:       Trailblaze YouTube Player is a WordPress plugin that provides a customizable YouTube player with playlist and channel support.
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            TrailBlaze Creative
  * Author URI:        https://trailblazecreative.com//
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'TRAILBLAZE_YOUTUBE_PLAYER_VERSION', '1.0.1' );
+define( 'TRAILBLAZE_YOUTUBE_PLAYER_VERSION', '1.0.2' );
 
 /**
  * The code that runs during plugin activation.
