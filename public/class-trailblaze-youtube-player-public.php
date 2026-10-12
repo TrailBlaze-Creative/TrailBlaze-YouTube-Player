@@ -80,30 +80,41 @@ class Trailblaze_Youtube_Player_Public {
     // trailblaze_youtube_shortcode
     public function trailblaze_youtube_shortcode($atts) {
         // Define default attributes
-        $atts = shortcode_atts(
-            array(
-                'user' => null,
-                'channelId' => null,
-                'playlist' => '',
-                'fullscreen' => false,
-                'accent' => '#fff',
-                'controls' => true,
-                'annotations' => false,
-                'autoplay' => false,
-                'chainVideos' => true,
-                'browsePlaylists' => false,
-                'playerTheme' => 'dark',
-                'listTheme' => 'dark',
-                'responsive' => true,
-                'playId' => '',
-                'sortList' => false,
-                'reverseList' => false,
-                'shuffleList' => false,
-                'wmode' => 'opaque',
-            ),
+        $defaults = array(
+            'user' => null,
+            'channelId' => null,
+            'playlist' => '',
+            'fullscreen' => false,
+            'accent' => '#fff',
+            'controls' => true,
+            'annotations' => false,
+            'autoplay' => false,
+            'chainVideos' => true,
+            'browsePlaylists' => false,
+            'playerTheme' => 'dark',
+            'listTheme' => 'dark',
+            'responsive' => true,
+            'playId' => '',
+            'sortList' => false,
+            'reverseList' => false,
+            'shuffleList' => false,
+            'wmode' => 'opaque',
+        );
+
+        // WordPress lowercases shortcode attribute names, so match against lowercase keys
+        // and map the results back to the camelCase keys YTV expects.
+        $parsed = shortcode_atts(
+            array_change_key_case( $defaults, CASE_LOWER ),
             $atts,
             'trailblaze_youtube'
         );
+
+        $atts = array();
+        foreach ( $defaults as $key => $default ) {
+            $value = $parsed[ strtolower( $key ) ];
+            // Shortcode values arrive as strings, and "false" is truthy in JS.
+            $atts[ $key ] = is_bool( $default ) ? filter_var( $value, FILTER_VALIDATE_BOOLEAN ) : $value;
+        }
 
         // Generate a unique ID for the div
         $div_id = 'ytv-' . uniqid();
